@@ -14,7 +14,7 @@ find_package(Qt6 COMPONENTS
         Sql
         REQUIRED)
 
-add_executable(cppguis main.cpp Routing.h)
+add_executable(cppguis main.cpp Arguments_open.h)
 
 target_link_libraries(cppguis
         Qt::Core
