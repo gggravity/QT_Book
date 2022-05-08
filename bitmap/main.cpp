@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include <QApplication>
-#include "Stub.h"
+#include "Window.h"
 
 using namespace std;
 
@@ -8,7 +8,7 @@ int main (int argc, char *argv[])
 try
   {
     QApplication a(argc, argv);
-    Stub window;
+    Window window;
 //    window.resize(800, 600);
     window.show();
 

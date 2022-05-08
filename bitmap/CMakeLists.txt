@@ -14,7 +14,7 @@ find_package(Qt6 COMPONENTS
         Sql
         REQUIRED)
 
-add_executable(cppguis main.cpp Stub.h)
+add_executable(cppguis main.cpp Canvas.h Canvas.cpp Palette_button.h Window.h Window.cpp)
 
 target_link_libraries(cppguis
         Qt::Core
