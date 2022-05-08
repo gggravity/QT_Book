@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include <QApplication>
-#include "Signals_forward.h"
+#include "Signals_extra.h"
 
 using namespace std;
 
@@ -9,7 +9,7 @@ try
   {
     QApplication a(argc, argv);
 
-    Signals_forward window;
+    Signals_extra window;
     window.resize(800, 600);
     window.show();
 
