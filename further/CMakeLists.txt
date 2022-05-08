@@ -14,7 +14,7 @@ find_package(Qt6 COMPONENTS
         Sql
         REQUIRED)
 
-add_executable(cppguis main.cpp Signals_extra_2.h)
+add_executable(cppguis main.cpp Routing.h)
 
 target_link_libraries(cppguis
         Qt::Core
