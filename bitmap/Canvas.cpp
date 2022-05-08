@@ -24,20 +24,37 @@ void Canvas::mouseMoveEvent (QMouseEvent *event)
     auto position = event->position();
 
     if (last_x == -99) // First event.
-    {
-      last_x = int(position.x());
-      last_y = int(position.y());
-      return;
-    }
+      {
+        last_x = int(position.x());
+        last_y = int(position.y());
+        return;
+      }
 
     auto painter = QPainter(pixmap);
 
     auto pen = painter.pen();
-    pen.setWidth(4);
-    pen.setColor(*pen_color);
+//    pen.setWidth(4);
+//    pen.setColor(*pen_color);
+//
+//    painter.setPen(pen);
+//    painter.drawLine(last_x, last_y, int(position.x()), int(position.y()));
 
+    pen.setWidth(1);
+    pen.setColor(*pen_color);
     painter.setPen(pen);
-    painter.drawLine(last_x, last_y, int(position.x()), int(position.y()));
+
+    constexpr int SPRAY_PARTICLES { 10 };
+    constexpr int SPRAY_DIAMETER { 10 };
+    int xo { 0 };
+    int yo { 0 };
+
+    for (int i = 0 ; i < SPRAY_PARTICLES ; i++)
+      {
+        xo = QRandomGenerator::global()->bounded(SPRAY_DIAMETER);
+        yo = QRandomGenerator::global()->bounded(SPRAY_DIAMETER);
+        painter.drawPoint(int(position.x()) + xo, int(position.y()) + yo);
+      }
+
     painter.end();
 
     setPixmap(*pixmap);
