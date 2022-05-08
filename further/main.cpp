@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include <QApplication>
-#include "Signals_extra.h"
+#include "Signals_extra_2.h"
 
 using namespace std;
 
@@ -10,7 +10,7 @@ try
     QApplication a(argc, argv);
 
     Signals_extra window;
-    window.resize(800, 600);
+//    window.resize(800, 600);
     window.show();
 
     return QApplication::exec();
