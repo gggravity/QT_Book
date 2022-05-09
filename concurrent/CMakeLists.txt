@@ -14,7 +14,7 @@ find_package(Qt6 COMPONENTS
         Sql
         REQUIRED)
 
-add_executable(cppguis main.cpp Bad_example_2.h Bad_example_2.cpp)
+add_executable(cppguis main.cpp Q_runner_1.h)
 
 target_link_libraries(cppguis
         Qt::Core
