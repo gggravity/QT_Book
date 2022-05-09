@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include <QApplication>
-#include "Bad_example_1.h"
+#include "Bad_example_2.h"
 
 using namespace std;
 
@@ -8,7 +8,7 @@ int main (int argc, char *argv[])
 try
   {
     QApplication a(argc, argv);
-    Bad_example_1 window;
+    Bad_example_2 window;
     window.resize(800, 600);
     window.show();
 
