@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include <QApplication>
-#include "Q_runner_base.h"
+#include "Q_runner_progress.h"
 
 using namespace std;
 
@@ -8,8 +8,8 @@ int main (int argc, char *argv[])
 try
   {
     QApplication a(argc, argv);
-    Q_runner_base window;
-    window.resize(800, 600);
+    Q_runner_progress window;
+//    window.resize(800, 600);
     window.show();
 
     return QApplication::exec();
