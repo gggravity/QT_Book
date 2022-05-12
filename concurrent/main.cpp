@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include <QApplication>
-#include "Q_runner_progress.h"
+#include "Q_runner_progress_many.h"
 
 using namespace std;
 

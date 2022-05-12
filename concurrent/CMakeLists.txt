@@ -15,7 +15,8 @@ find_package(Qt6 COMPONENTS
         REQUIRED)
 
 add_executable(cppguis main.cpp
-        Q_runner_progress.cpp Q_runner_progress.h Worker_2.cpp Worker_2.h)
+        Q_runner_progress_many.cpp Q_runner_progress_many.h
+        Worker_3.cpp Worker_3.h)
 
 target_link_libraries(cppguis
         Qt::Core
