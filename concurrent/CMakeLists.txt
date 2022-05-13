@@ -13,10 +13,12 @@ find_package(Qt6 COMPONENTS
         Widgets
         Sql
         Charts
+        Network
         REQUIRED)
 
 add_executable(cppguis main.cpp
-        Q_runner_stop.cpp Q_runner_stop.h Job_runner_1.cpp Job_runner_1.h)
+        Q_runner_io.cpp Q_runner_io.h
+        Worker_io.cpp Worker_io.h)
 
 target_link_libraries(cppguis
         Qt::Core
@@ -24,5 +26,6 @@ target_link_libraries(cppguis
         Qt::Widgets
         Qt::Sql
         Qt6::Charts
+        Qt6::Network
         )
 
