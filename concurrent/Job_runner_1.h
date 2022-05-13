@@ -36,7 +36,13 @@ class Job_runner_1 : public QObject, public QRunnable
 
             void kill ();
 
+            void pause();
+
+            void resume();
+
+
       private:
             bool is_killed { false };
+            bool is_paused = { false };
       };
 

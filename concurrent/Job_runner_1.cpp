@@ -20,6 +20,12 @@ void Job_runner_1::run ()
           {
             emit update_progress(n + 1);
             usleep(100000);
+
+            while (is_paused)
+              {
+                usleep(0);
+              }
+
             if (is_killed)
               {
                 throw Worker_killed_exception();
@@ -35,4 +41,14 @@ void Job_runner_1::run ()
 void Job_runner_1::kill ()
   {
     is_killed = true;
+  }
+
+void Job_runner_1::pause ()
+  {
+    is_paused = true;
+  }
+
+void Job_runner_1::resume ()
+  {
+    is_paused = false;
   }
