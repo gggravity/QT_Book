@@ -12,16 +12,17 @@ find_package(Qt6 COMPONENTS
         Gui
         Widgets
         Sql
+        Charts
         REQUIRED)
 
 add_executable(cppguis main.cpp
-        Q_runner_progress_many.cpp Q_runner_progress_many.h
-        Worker_3.cpp Worker_3.h)
+        Q_runner_calculator.cpp Q_runner_calculator.h Worker_4.cpp Worker_4.h)
 
 target_link_libraries(cppguis
         Qt::Core
         Qt::Gui
         Qt::Widgets
         Qt::Sql
+        Qt6::Charts
         )
 
