@@ -16,7 +16,7 @@ find_package(Qt6 COMPONENTS
         REQUIRED)
 
 add_executable(cppguis main.cpp
-        Q_runner_calculator.cpp Q_runner_calculator.h Worker_4.cpp Worker_4.h)
+        Q_runner_stop.cpp Q_runner_stop.h Job_runner_1.cpp Job_runner_1.h)
 
 target_link_libraries(cppguis
         Qt::Core
