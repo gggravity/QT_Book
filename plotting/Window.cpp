@@ -35,11 +35,11 @@ Window::Window (QWidget *parent)
     /** Setting the chart theme */
 //    chart->setTheme(QChart::ChartThemeDark);
 
-    auto chart_view = new QChartView(chart);
+    auto chart_view = new QChartView(chart, this);
     chart_view->setRenderHint(QPainter::Antialiasing);
 
-    auto series0 = new QLineSeries();
-    auto series1 = new QScatterSeries();
+    auto series0 = new QLineSeries(this);
+    auto series1 = new QScatterSeries(this);
 
     vector<Data> data { { 1,  30 },
                         { 2,  32 },
