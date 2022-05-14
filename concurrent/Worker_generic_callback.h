@@ -11,16 +11,18 @@
 #include <QString>
 #include <QThreadPool>
 #include <boost/stacktrace.hpp>
+#include "Q_runner_generic_callback.h"
 
 using namespace std;
 
-typedef QString (*func_t)(int, int);
+typedef QString (*func_t) (int, int, Q_runner_generic_callback *);
 
-class Worker_generic : public QObject, public QRunnable
+class Worker_generic_callback : public QObject, public QRunnable
       {
       Q_OBJECT
+
       public:
-            explicit Worker_generic (func_t func, int x = 10, int y = 20);
+            explicit Worker_generic_callback (func_t func, Q_runner_generic_callback *self, int x = 10, int y = 20);
 
             void run () override;
 
@@ -28,12 +30,15 @@ class Worker_generic : public QObject, public QRunnable
 
             void finished ();
 
-            void error (const boost::stacktrace::stacktrace& stacktrace);
+            void error (const boost::stacktrace::stacktrace &stacktrace);
 
             void result (const QString &string);
+
 
       private:
             func_t m_func;
             int m_x;
             int m_y;
+            Q_runner_generic_callback *m_self;
+
       };

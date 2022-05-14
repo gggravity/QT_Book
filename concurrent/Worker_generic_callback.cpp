@@ -1,0 +1,43 @@
+//
+// Created by martin on 14-05-22.
+//
+
+#include <iostream>
+#include "Worker_generic_callback.h"
+
+Worker_generic_callback::Worker_generic_callback (func_t func, Q_runner_generic_callback *self, int x, int y)
+  {
+    // Store constructor arguments (re-used for processing)
+    m_self = self;
+    m_func = func;
+    m_x = x;
+    m_y = y;
+  }
+
+void Worker_generic_callback::run ()
+  {
+    qInfo() << "Thread running.";
+
+    QString output;
+
+    bool exception_caught = true;
+    try
+      {
+
+        output = m_func(m_x, m_y, m_self);
+//        throw runtime_error("Something went wrong.");
+        exception_caught = false;
+      }
+    catch (exception &e)
+      {
+        qWarning() << e.what();
+        auto stacktrace = boost::stacktrace::stacktrace();
+        emit error(stacktrace);
+      }
+    if (!exception_caught)
+      {
+        emit result(output);  // Return the result of the processing
+      }
+    // finally:
+    emit finished(); // Done
+  }
