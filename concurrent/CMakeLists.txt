@@ -6,6 +6,13 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+
+find_package(Boost 1.78.0 COMPONENTS
+        filesystem
+        regex)
 
 find_package(Qt6 COMPONENTS
         Core
@@ -17,8 +24,7 @@ find_package(Qt6 COMPONENTS
         REQUIRED)
 
 add_executable(cppguis main.cpp
-        Q_runner_io.cpp Q_runner_io.h
-        Worker_io.cpp Worker_io.h)
+ Q_runner_generic.cpp Q_runner_generic.h Worker_generic.cpp Worker_generic.h)
 
 target_link_libraries(cppguis
         Qt::Core
