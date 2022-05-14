@@ -23,13 +23,8 @@ find_package(Qt6 COMPONENTS
         Network
         REQUIRED)
 
-add_executable(cppguis
-        main.cpp
-        Worker_generic_callback.h
-        Worker_generic_callback.cpp
-        Q_runner_generic_callback.h
-        Q_runner_generic_callback.cpp
-        )
+add_executable(cppguis main.cpp
+        Q_runner_process.cpp Q_runner_process.h Sub_process_worker.cpp Sub_process_worker.h)
 
 target_link_libraries(cppguis
         Qt::Core
