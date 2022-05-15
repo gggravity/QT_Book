@@ -41,6 +41,8 @@ class Window : public QMainWindow
 
             void currentIndexChanged (int index);
 
+            void hoverd(const QPointF &point, bool state);
+
       private:
             QChart *chart;
 

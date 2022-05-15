@@ -41,6 +41,9 @@ Window::Window (QWidget *parent)
     auto series0 = new QLineSeries(this);
     auto series1 = new QScatterSeries(this);
 
+    // adding hover effects
+    connect(series1, &QScatterSeries::hovered, this, &Window::hoverd);
+
     vector<Data> data { { 1,  30 },
                         { 2,  32 },
                         { 3,  34 },
@@ -119,13 +122,13 @@ Window::Window (QWidget *parent)
     series1->setMarkerShape(QScatterSeries::MarkerShapeStar);
     series1->setMarkerSize(20.0);
 
+
     layout->addWidget(combo_box);
     layout->addWidget(chart_view);
 
     auto widget = new QWidget(this);
     widget->setLayout(layout);
     setCentralWidget(widget);
-
   }
 
 void Window::currentTextChanged (const QString &text)
@@ -139,29 +142,57 @@ void Window::currentIndexChanged (int index)
       {
         case 0:
           chart->setTheme(QChart::ChartThemeLight);
-          break;
+        break;
         case 1:
           chart->setTheme(QChart::ChartThemeBlueCerulean);
-          break;
+        break;
         case 2:
           chart->setTheme(QChart::ChartThemeDark);
-          break;
+        break;
         case 3:
           chart->setTheme(QChart::ChartThemeBrownSand);
-          break;
+        break;
         case 4:
           chart->setTheme(QChart::ChartThemeBlueNcs);
-          break;
+        break;
         case 5:
           chart->setTheme(QChart::ChartThemeHighContrast);
-          break;
+        break;
         case 6:
           chart->setTheme(QChart::ChartThemeBlueIcy);
-          break;
+        break;
         case 7:
           chart->setTheme(QChart::ChartThemeQt);
-          break;
+        break;
         default:
           break;
+      }
+  }
+
+void Window::hoverd (const QPointF &point, bool state)
+  {
+    qInfo() << "Hovering" << state;
+
+    if (state)
+      {
+        for (auto serie : chart->series())
+          {
+            if (serie->name() == "Scatter serie")
+              {
+                auto p = qobject_cast<QScatterSeries *>(serie);
+                p->setMarkerShape(QScatterSeries::MarkerShapeRotatedRectangle);
+              }
+          }
+      }
+    else
+      {
+        for (auto serie : chart->series())
+          {
+            if (serie->name() == "Scatter serie")
+              {
+                auto p = qobject_cast<QScatterSeries *>(serie);
+                p->setMarkerShape(QScatterSeries::MarkerShapeStar);
+              }
+          }
       }
   }
